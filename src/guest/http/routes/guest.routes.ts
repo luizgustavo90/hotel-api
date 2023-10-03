@@ -1,14 +1,14 @@
-import { CreateUserController } from '@user/controllers/create-user-controller'
-import { ListUserController } from '@user/controllers/list-user-controller'
+import { CreateGuestController } from '@guest/controllers/create-guest-controller'
+import { ListGuestController } from '@guest/controllers/list-guest-controller'
 import { celebrate, Joi, Segments } from 'celebrate'
 import { Router } from 'express'
 import { container } from 'tsyringe'
 
-const usersRoute = Router()
-const createUserController = container.resolve(CreateUserController)
-const listUsersController = container.resolve(ListUserController)
+const guestsRoute = Router()
+const createGuestController = container.resolve(CreateGuestController)
+const listGuestController = container.resolve(ListGuestController)
 
-usersRoute.post(
+guestsRoute.post(
   '/',
   celebrate({
     [Segments.BODY]: Joi.object().keys({
@@ -18,11 +18,11 @@ usersRoute.post(
     }),
   }),
   (req, res) => {
-    return createUserController.handle(req, res)
+    return createGuestController.handle(req, res)
   },
 )
 
-usersRoute.get(
+guestsRoute.get(
   '/',
   celebrate({
     [Segments.QUERY]: Joi.object().keys({
@@ -31,8 +31,8 @@ usersRoute.get(
     }),
   }),
   (req, res) => {
-    return listUsersController.handle(req, res)
+    return listGuestController.handle(req, res)
   },
 )
 
-export { usersRoute }
+export { guestsRoute }
