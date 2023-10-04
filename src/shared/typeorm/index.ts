@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm'
 import 'dotenv/config'
 import { Guest } from '@guest/main/entities/Guest'
+import { CreateTableGuest1696422313799 } from '@shared/typeorm/migrations/1696422313799-CreateTableGuest'
 
 export const dataSource = new DataSource({
   type: 'mysql',
@@ -9,5 +10,5 @@ export const dataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   entities: [Guest],
-  migrations: [],
+  migrations: [CreateTableGuest1696422313799],
 })
