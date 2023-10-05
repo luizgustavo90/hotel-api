@@ -8,6 +8,15 @@ export type CreateGuestDTO = {
   age: number
 }
 
+export type UpdateGuestDTO = {
+  id: string
+  name: string
+  document: string
+  email: string
+  phone: string
+  age: number
+}
+
 export type PaginateParams = {
   page: number
   skip: number

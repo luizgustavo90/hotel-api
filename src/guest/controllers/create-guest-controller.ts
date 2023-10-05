@@ -1,6 +1,5 @@
 import { container } from 'tsyringe'
 import { Request, Response } from 'express'
-import { instanceToInstance } from 'class-transformer'
 import { CreateGuestUseCase } from '@guest/main/usecases/create-guest-usecase'
 
 export class CreateGuestController {
@@ -14,6 +13,8 @@ export class CreateGuestController {
       phone,
       age,
     })
-    return res.status(201).json(instanceToInstance(guest))
+    return res
+      .status(201)
+      .json({ message: { statusCode: 201, detail: 'Guest created!' }, guest })
   }
 }

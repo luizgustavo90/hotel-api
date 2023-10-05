@@ -14,4 +14,6 @@ export interface IGuestRepository {
     take,
   }: PaginateParams): Promise<GuestPaginateProperties>
   findByEmail(email: string): Promise<Guest | null>
+  findById(id: string): Promise<Guest | null>
+  delete(guest: Guest): Promise<void>
 }

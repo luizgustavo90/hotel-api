@@ -51,4 +51,11 @@ export class GuestRepository implements IGuestRepository {
   async findByEmail(email: string): Promise<Guest | null> {
     return this.repository.findOneBy({ email })
   }
+
+  async findById(id: string): Promise<Guest | null> {
+    return this.repository.findOneBy({ id })
+  }
+  async delete(guest: Guest): Promise<void> {
+    await this.repository.remove(guest)
+  }
 }
