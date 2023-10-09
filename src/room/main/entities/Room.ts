@@ -3,17 +3,19 @@ import { Column, Entity, PrimaryColumn } from 'typeorm'
 @Entity('room')
 export class Room {
   @PrimaryColumn()
-  roomNo: number
+  rommNo: number
   @Column()
   type: string
   @Column()
-  value: string
+  value: number
   @Column()
   status: string
+  @Column()
+  createdAt: string
 
   constructor() {
-    if (!this.roomNo) {
-      this.roomNo = Math.floor(Math.random() * 100) + 1
+    if (!this.rommNo) {
+      this.rommNo = Math.floor(Math.random() * 100) + 1
     }
   }
 }
