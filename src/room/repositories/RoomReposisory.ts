@@ -5,6 +5,7 @@ import {
   RoomPaginateProperties,
   PaginateParams,
   CreateRoomDTO,
+  ExtendedPaginateParams,
 } from '../main/entities/types'
 import { IRoomRepository } from './IRoomRepository'
 
@@ -47,6 +48,44 @@ export class RoomRepository implements IRoomRepository {
     return result
   }
 
+  async findByParams({
+    page,
+    skip,
+    take,
+    type,
+    status,
+    roomNo,
+  }: ExtendedPaginateParams & {
+    type?: string
+    status?: string
+    roomNo?: number
+  }): Promise<RoomPaginateProperties> {
+    const query = this.repository.createQueryBuilder('r').skip(skip).take(take)
+
+    if (type) {
+      query.where('r.type = :type', { type })
+    }
+
+    if (status) {
+      query.andWhere('r.status = :status', { status })
+    }
+
+    if (roomNo) {
+      query.andWhere('r.roomNo = :roomNo', { roomNo })
+    }
+
+    const [user, count] = await query.getManyAndCount()
+
+    const result = {
+      per_page: take,
+      total: count,
+      current_page: page,
+      data: user,
+    }
+
+    return result
+  }
+
   async findByNumber(rommNo: number): Promise<Room | null> {
     return this.repository.findOneBy({ rommNo })
   }
@@ -58,6 +97,7 @@ export class RoomRepository implements IRoomRepository {
   async findByStatus(status: string): Promise<Room | null> {
     return this.repository.findOneBy({ status })
   }
+
   async delete(room: Room): Promise<void> {
     await this.repository.remove(room)
   }

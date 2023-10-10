@@ -19,3 +19,13 @@ export type RoomPaginateProperties = {
   current_page: number
   data: Room[]
 }
+
+interface FilterParams {
+  type?: string
+  status?: string
+  roomNo?: number
+  page: number
+  limit: number
+}
+
+export interface ExtendedPaginateParams extends PaginateParams, FilterParams {}
