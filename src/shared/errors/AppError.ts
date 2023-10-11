@@ -3,7 +3,7 @@ export class AppError {
   public statusCode: number
 
   constructor(message: string, statusCode = 400) {
-    this.message = message
     this.statusCode = statusCode
+    this.message = message
   }
 }

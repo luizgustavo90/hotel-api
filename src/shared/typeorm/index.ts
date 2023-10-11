@@ -5,6 +5,7 @@ import { CreateTableGuest1696422313799 } from '@shared/typeorm/migrations/169642
 import { CreateRoomsTable1696515698764 } from '@shared/typeorm/migrations/1696515698764-CreateRoomsTable'
 import { AddRoomNoToGuest1696532556860 } from '@shared/typeorm/migrations/1696532556860-AddRoomNoToGuest'
 import { UpdateParamsToNotUnique1696946763539 } from './migrations/1696946763539-UpdateParamsToNotUnique'
+import { CreateTableReserve1697045489736 } from './migrations/1697045489736-CreateTableReserve'
 import { Room } from 'src/room/main/entities/Room'
 export const dataSource = new DataSource({
   type: 'mysql',
@@ -18,5 +19,6 @@ export const dataSource = new DataSource({
     CreateRoomsTable1696515698764,
     AddRoomNoToGuest1696532556860,
     UpdateParamsToNotUnique1696946763539,
+    CreateTableReserve1697045489736,
   ],
 })
