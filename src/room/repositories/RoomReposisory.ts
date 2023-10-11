@@ -8,6 +8,7 @@ import {
   ExtendedPaginateParams,
 } from '../main/entities/types'
 import { IRoomRepository } from './IRoomRepository'
+//import { roomsRoute } from '@room/http/routes/room.routes'
 
 export class RoomRepository implements IRoomRepository {
   private repository: Repository<Room>
@@ -52,30 +53,21 @@ export class RoomRepository implements IRoomRepository {
     page,
     skip,
     take,
-    type,
-    status,
-    roomNo,
-  }: ExtendedPaginateParams & {
-    type?: string
-    status?: string
-    roomNo?: number
-  }): Promise<RoomPaginateProperties> {
+    type = undefined,
+    status = undefined,
+    rommNo = undefined,
+  }: ExtendedPaginateParams): Promise<RoomPaginateProperties> {
     const query = this.repository.createQueryBuilder('r').skip(skip).take(take)
 
-    if (type) {
+    if (type !== 'undefined') {
       query.where('r.type = :type', { type })
-    }
-
-    if (status) {
+    } else if (status !== 'undefined') {
       query.andWhere('r.status = :status', { status })
-    }
-
-    if (roomNo) {
-      query.andWhere('r.roomNo = :roomNo', { roomNo })
+    } else if (rommNo || !isNaN(Number(rommNo))) {
+      query.andWhere('r.rommNo = :rommNo', { rommNo })
     }
 
     const [user, count] = await query.getManyAndCount()
-
     const result = {
       per_page: take,
       total: count,

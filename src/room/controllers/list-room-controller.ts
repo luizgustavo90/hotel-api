@@ -9,10 +9,7 @@ export class ListRoomController {
       request.query.page && Number(request.query.page) > 0
         ? Number(request.query.page)
         : 1
-    const limit =
-      request.query.limit && Number(request.query.limit) > 0
-        ? Number(request.query.limit)
-        : 15
+    const limit = Number(process.env.PAGE_SIZE)
 
     const room = await listRoomUseCase.execute({ page, limit })
     return response.json(room)

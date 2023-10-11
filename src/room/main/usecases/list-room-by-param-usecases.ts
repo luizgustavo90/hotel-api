@@ -1,7 +1,4 @@
-import {
-  ExtendedPaginateParams,
-  RoomPaginateProperties,
-} from '../entities/types'
+import { PaginateParamsFilter, RoomPaginateProperties } from '../entities/types'
 import { inject, injectable } from 'tsyringe'
 import { IRoomRepository } from '@room/repositories/IRoomRepository'
 
@@ -14,10 +11,10 @@ export class ListRoomByParamUseCase {
   async execute({
     page,
     limit,
-    type,
+    rommNo,
     status,
-    roomNo,
-  }: ExtendedPaginateParams): Promise<RoomPaginateProperties> {
+    type,
+  }: PaginateParamsFilter): Promise<RoomPaginateProperties> {
     const take = limit
     const skip = (Number(page) - 1) * take
     const rooms = this.roomRepository.findByParams({
@@ -26,7 +23,7 @@ export class ListRoomByParamUseCase {
       take,
       type,
       status,
-      roomNo,
+      rommNo,
       limit,
     })
     return rooms

@@ -16,7 +16,7 @@ export interface IRoomRepository {
     take,
     type,
     status,
-    roomNo,
+    rommNo,
   }: ExtendedPaginateParams): Promise<RoomPaginateProperties>
   findByNumber(rommNo: number): Promise<Room | null>
   findByType(type: string): Promise<Room | null>
