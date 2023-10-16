@@ -4,7 +4,20 @@ export type CreateCheckInDTO = {
   type?: string
   rommNo: number
   guestId: string
+  stay?: number
   checkIn?: string
+  checkOut?: string
+  totalCost?: number
+}
+
+export type FinishCheckOutDTO = {
+  guestId: string
+  rommNo: number
+}
+
+export type CheckOutMessage = {
+  checkIn: CreateCheckInDTO
+  value: string
 }
 
 export type PaginateParams = {

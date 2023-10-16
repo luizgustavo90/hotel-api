@@ -13,6 +13,8 @@ export class Reserve {
   checkIn: string
   @Column()
   checkOut: string
+  @Column()
+  totalCost: number
 
   constructor() {
     if (!this.id) {

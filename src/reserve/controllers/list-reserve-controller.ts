@@ -1,15 +1,15 @@
 import { container } from 'tsyringe'
 import { Request, Response } from 'express'
 import { instanceToInstance } from 'class-transformer'
-import { ListGuestUseCase } from '@guest/main/usecases/list-guest-usecase'
+import { ListReserveUseCase } from '@reserve/main/usecases/list-reserve-usecase'
 
-export class ListGuestController {
+export class ListReserveController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const listGuestUseCase = container.resolve(ListGuestUseCase)
+    const listReserveUseCase = container.resolve(ListReserveUseCase)
     const page =
       req.query.page && Number(req.query.page) > 0 ? Number(req.query.page) : 1
     const limit = Number(process.env.PAGE_SIZE)
-    const guest = await listGuestUseCase.execute({ page, limit })
-    return res.status(201).json(instanceToInstance(guest))
+    const reserves = await listReserveUseCase.execute({ page, limit })
+    return res.status(201).json(instanceToInstance(reserves))
   }
 }

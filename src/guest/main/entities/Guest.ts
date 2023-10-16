@@ -15,6 +15,8 @@ export class Guest {
   phone: string
   @Column()
   age: number
+  @Column()
+  roomNo: number
 
   constructor() {
     if (!this.id) {

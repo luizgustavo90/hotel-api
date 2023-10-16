@@ -6,7 +6,13 @@ import {
 } from '../main/entities/types'
 
 export interface IReserveRepository {
-  create({ type, rommNo, guestId }: CreateCheckInDTO): Promise<Reserve>
+  create({
+    rommNo,
+    guestId,
+    checkIn,
+    checkOut,
+    totalCost,
+  }: CreateCheckInDTO): Promise<Reserve>
   save(reserve: Reserve): Promise<Reserve>
   findAll({
     page,
@@ -14,5 +20,6 @@ export interface IReserveRepository {
     take,
   }: PaginateParams): Promise<ReservePaginateProperties>
   findById(id: string): Promise<Reserve | null>
+  findByNumber(roomId: number): Promise<Reserve | null>
   delete(reserve: Reserve): Promise<void>
 }

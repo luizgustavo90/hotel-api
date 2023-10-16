@@ -15,8 +15,20 @@ export class ReserveRepository implements IReserveRepository {
     this.repository = dataSource.getRepository(Reserve)
   }
 
-  async create({ rommNo, guestId }: CreateCheckInDTO): Promise<Reserve> {
-    const reserve = this.repository.create({ rommNo, guestId })
+  async create({
+    rommNo,
+    guestId,
+    checkIn,
+    checkOut,
+    totalCost,
+  }: CreateCheckInDTO): Promise<Reserve> {
+    const reserve = this.repository.create({
+      rommNo,
+      guestId,
+      checkIn,
+      checkOut,
+      totalCost,
+    })
     return this.repository.save(reserve)
   }
 
@@ -48,5 +60,8 @@ export class ReserveRepository implements IReserveRepository {
   }
   async delete(reserve: Reserve): Promise<void> {
     await this.repository.remove(reserve)
+  }
+  async findByNumber(rommNo: number): Promise<Reserve | null> {
+    return this.repository.findOneBy({ rommNo })
   }
 }

@@ -1,17 +1,19 @@
 import { container } from 'tsyringe'
 import { Request, Response } from 'express'
-import { CheckInGuestUseCase } from '@guest/main/usecases/checkin-guest-usecases'
+import { CheckInReserveUseCase } from '@reserve/main/usecases/checkin-reserve-usecases'
 
-export class CheckInGuestController {
+export class CheckInReserveController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const checkInGuestUseCase = container.resolve(CheckInGuestUseCase)
+    const checkInGuestUseCase = container.resolve(CheckInReserveUseCase)
     const { type, guestId } = req.params
+    const stay = Number(req.query.stay)
     const rommNo = Number(req.params.roomNo)
 
     const reserve = await checkInGuestUseCase.execute({
       type,
       rommNo,
       guestId,
+      stay,
     })
     return res.status(201).json({
       message: {

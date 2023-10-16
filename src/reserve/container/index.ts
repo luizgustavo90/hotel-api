@@ -1,10 +1,16 @@
 import { container } from 'tsyringe'
-import { CheckInGuestController } from '@reserve/controllers/checkin-reserve-controller'
 import { IReserveRepository } from '@reserve/repositories/IReserveRepository'
 import { ReserveRepository } from '@reserve/repositories/ReserveRepository'
+import { CheckInReserveController } from '@reserve/controllers/checkin-reserve-controller'
+import { ListReserveController } from '@reserve/controllers/list-reserve-controller'
+
 container.registerSingleton<IReserveRepository>(
   'ReserveRepository',
   ReserveRepository,
 )
 
-container.registerSingleton('CheckInGuestController', CheckInGuestController)
+container.registerSingleton(
+  'CheckInReserveController',
+  CheckInReserveController,
+)
+container.registerSingleton('ListReserveController', ListReserveController)
