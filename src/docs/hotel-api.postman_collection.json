@@ -1,0 +1,1008 @@
+{
+	"info": {
+		"_postman_id": "a5b0a676-3bc2-477e-90cc-689dab89a8a0",
+		"name": "hotel-api",
+		"description": "API que simula o sistema de um hotel, onde você controla toda a administração, CRUD de:\n\n- quartos (rooms)\n    \n- hospedes(guests)\n    \n- reservas (reserves)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29088461"
+	},
+	"item": [
+		{
+			"name": "Guest",
+			"item": [
+				{
+					"name": "FindAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/guest",
+						"description": "Rota responsável por mostrar todos os hóspedes cadastrados"
+					},
+					"response": [
+						{
+							"name": "FindAll",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/guest"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "524"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-eLIgU6gWqT+mUPDrKQfXeacK+7w\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:27:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"per_page\": 15,\n    \"total\": 3,\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": \"14fd9fb4-ae47-4fea-9329-fc8ad2f00b57\",\n            \"name\": \"Ricardo\",\n            \"document\": \"5958787888\",\n            \"email\": \"ricardo@terra.com.br\",\n            \"phone\": \"1598716654\",\n            \"age\": 30,\n            \"roomNo\": 3\n        },\n        {\n            \"id\": \"39f11c0b-154b-4244-a6a7-e2510f046fdb\",\n            \"name\": \"Eder\",\n            \"document\": \"405533483312\",\n            \"email\": \"eder@uol.com.br\",\n            \"phone\": \"01559570074\",\n            \"age\": 21,\n            \"roomNo\": null\n        },\n        {\n            \"id\": \"c099d67d-9161-4535-8b96-f62d817fc86b\",\n            \"name\": \"Luiz\",\n            \"document\": \"5958787478\",\n            \"email\": \"luiz@terra.com.br\",\n            \"phone\": \"15987166454\",\n            \"age\": 32,\n            \"roomNo\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create guest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Ricardo\",\r\n    \"document\": \"5958787478\",\r\n    \"email\": \"ricardo@terra.com.br\",\r\n    \"phone\": \"1598716654\",\r\n    \"age\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/guest",
+						"description": "Rota responsável por criar um registro de hóspede"
+					},
+					"response": [
+						{
+							"name": "Create guest",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"João\",\r\n    \"document\": \"48767890389\",\r\n    \"email\": \"joao@terra.com.br\",\r\n    \"phone\": \"1599887665\",\r\n    \"age\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/guest"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "208"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d0-F8x857HHlxcb+CUjT1ri2Kdfx3U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:28:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"statusCode\": 201,\n        \"detail\": \"Guest created!\"\n    },\n    \"guest\": {\n        \"id\": \"f5b9640d-9e33-4362-9c5a-6e82c7357d46\",\n        \"name\": \"João\",\n        \"document\": \"48767890389\",\n        \"email\": \"joao@terra.com.br\",\n        \"phone\": \"1599887665\",\n        \"age\": 25\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update guest",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"document\": \"5958787888\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/guest/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"guest",
+								":id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "14fd9fb4-ae47-4fea-9329-fc8ad2f00b57",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "14fd9fb4-ae47-4fea-9329-fc8ad2f00b57"
+								}
+							]
+						},
+						"description": "Rota responsável pela alteração dos dados do hóspede, seja:\n\n- nome\n    \n- documento\n    \n- email\n    \n- telefone\n    \n- idade"
+					},
+					"response": [
+						{
+							"name": "Update guest",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"joao@msn.com.br\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/guest/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"guest",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "f5b9640d-9e33-4362-9c5a-6e82c7357d46"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "155"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9b-eWP/qu6jsGgg8gJk1kgEgo6JkjI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:28:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"f5b9640d-9e33-4362-9c5a-6e82c7357d46\",\n    \"name\": \"João\",\n    \"document\": \"48767890389\",\n    \"email\": \"joao@msn.com.br\",\n    \"phone\": \"1599887665\",\n    \"age\": 25,\n    \"roomNo\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete guest",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/guest/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"guest",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Rota responsável por deletar um hóspede do sistema"
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/guest/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"guest",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "39f11c0b-154b-4244-a6a7-e2510f046fdb"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-Iqu1F8upR/NW2hAn7G6t63Mtz1U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:29:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"statusCode\": 201,\n        \"detail\": \"Guest was deleted successfully\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "São as rotas com as ações ligadas ao hospede (guest)"
+		},
+		{
+			"name": "Room",
+			"item": [
+				{
+					"name": "Create room",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/room/:type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								":type"
+							],
+							"variable": [
+								{
+									"key": "type",
+									"value": "Solteiro"
+								}
+							]
+						},
+						"description": "Rota responsável por criar um registro de quarto"
+					},
+					"response": [
+						{
+							"name": "Create room",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/room/:type",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"room",
+										":type"
+									],
+									"variable": [
+										{
+											"key": "type",
+											"value": "Familia"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-HYThmQJ1kSwees0oi9xSUOQ5J/w\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:29:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"statusCode\": 201,\n        \"detail\": \"Room created!\"\n    },\n    \"room\": {\n        \"rommNo\": 59,\n        \"type\": \"Familia\",\n        \"value\": 150,\n        \"status\": \"Livre\",\n        \"createdAt\": \"2023-10-17 16:29:22\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List By Param",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/room/filter?status=Solteiro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Solteiro"
+								},
+								{
+									"key": "type",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "roomNo",
+									"value": null,
+									"disabled": true
+								}
+							]
+						},
+						"description": "Rota responsável por listar todos os quartos conforme parâmetros:\n\n- status\n    \n- tipo (type)\n    \n- número(roomNo)"
+					},
+					"response": [
+						{
+							"name": "List By Param",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/room/filter?type=Solteiro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"room",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "Livre",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "Solteiro"
+										},
+										{
+											"key": "roomNo",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "744"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e8-A4se7fZ8vx+/Ifqkqp5b6hAnbPI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:29:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"per_page\": 15,\n    \"total\": 7,\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"rommNo\": 3,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Ocupado\",\n            \"createdAt\": \"2023-10-16T19:46:50.000Z\"\n        },\n        {\n            \"rommNo\": 7,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:58.000Z\"\n        },\n        {\n            \"rommNo\": 14,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:52.000Z\"\n        },\n        {\n            \"rommNo\": 22,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:51.000Z\"\n        },\n        {\n            \"rommNo\": 52,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:54.000Z\"\n        },\n        {\n            \"rommNo\": 70,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:59.000Z\"\n        },\n        {\n            \"rommNo\": 85,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-17T19:25:44.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List Rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/room",
+						"description": "Rota responsável pela listagem de todos os quartos"
+					},
+					"response": [
+						{
+							"name": "List Rooms",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/room"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1038"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"40e-CHXS7jnGViao/b7EactyKbQijl8\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:29:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"per_page\": 15,\n    \"total\": 10,\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"rommNo\": 3,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Ocupado\",\n            \"createdAt\": \"2023-10-16T19:46:50.000Z\"\n        },\n        {\n            \"rommNo\": 7,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:58.000Z\"\n        },\n        {\n            \"rommNo\": 14,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:52.000Z\"\n        },\n        {\n            \"rommNo\": 22,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:51.000Z\"\n        },\n        {\n            \"rommNo\": 39,\n            \"type\": \"Casal\",\n            \"value\": 100,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-10T14:33:59.000Z\"\n        },\n        {\n            \"rommNo\": 47,\n            \"type\": \"Casal\",\n            \"value\": 100,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-17T15:10:53.000Z\"\n        },\n        {\n            \"rommNo\": 52,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:54.000Z\"\n        },\n        {\n            \"rommNo\": 59,\n            \"type\": \"Familia\",\n            \"value\": 150,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-17T19:29:22.000Z\"\n        },\n        {\n            \"rommNo\": 70,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-16T19:46:59.000Z\"\n        },\n        {\n            \"rommNo\": 85,\n            \"type\": \"Solteiro\",\n            \"value\": 50,\n            \"status\": \"Livre\",\n            \"createdAt\": \"2023-10-17T19:25:44.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Room",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/room?roomNo=12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							],
+							"query": [
+								{
+									"key": "roomNo",
+									"value": "12"
+								}
+							]
+						},
+						"description": "Rota responsável por deletar um registro de quarto"
+					},
+					"response": [
+						{
+							"name": "Delete Room",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/room?roomNo=14",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"room"
+									],
+									"query": [
+										{
+											"key": "roomNo",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-Uywfm4iot3cEs1PX90JS6sWdZEI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:29:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"statusCode\": 201,\n        \"detail\": \"Room 14 was deleted successfully\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "São as rotas com as ações ligadas ao quarto (room)"
+		},
+		{
+			"name": "Reserve",
+			"item": [
+				{
+					"name": "Create Reserve (Check-In)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/reserve/:guestId/:roomNo/:type?stay=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reserve",
+								":guestId",
+								":roomNo",
+								":type"
+							],
+							"query": [
+								{
+									"key": "stay",
+									"value": "10"
+								}
+							],
+							"variable": [
+								{
+									"key": "guestId",
+									"value": "14fd9fb4-ae47-4fea-9329-fc8ad2f00b57"
+								},
+								{
+									"key": "roomNo",
+									"value": "3"
+								},
+								{
+									"key": "type",
+									"value": "Solteiro"
+								}
+							]
+						},
+						"description": "Rota responsável por criar um registro de reserva"
+					},
+					"response": [
+						{
+							"name": "Create Reserve",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/reserve/:guestId/:roomNo/:type?stay=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reserve",
+										":guestId",
+										":roomNo",
+										":type"
+									],
+									"query": [
+										{
+											"key": "stay",
+											"value": "10"
+										}
+									],
+									"variable": [
+										{
+											"key": "guestId",
+											"value": "14fd9fb4-ae47-4fea-9329-fc8ad2f00b57"
+										},
+										{
+											"key": "roomNo",
+											"value": "7"
+										},
+										{
+											"key": "type",
+											"value": "Solteiro"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "253"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fd-CtR4eH98xyMXxA2LYRNRGan9kcI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:30:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"statusCode\": 201,\n        \"message\": \"CheckIn Done!\"\n    },\n    \"reserve\": {\n        \"id\": \"653192e1-9d9e-4616-883e-c16a73312701\",\n        \"rommNo\": 7,\n        \"guestId\": \"14fd9fb4-ae47-4fea-9329-fc8ad2f00b57\",\n        \"checkIn\": \"2023-10-17 16:30:29\",\n        \"checkOut\": \"2023-10-27 16:30:29\",\n        \"totalCost\": 500\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List Reserves",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/reserve",
+						"description": "Rota responsável pela listagem de reservas"
+					},
+					"response": [
+						{
+							"name": "List Reserves",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/reserve"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "248"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f8-rusBkkWXWVdNzIZiVbJagS7wVQw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:30:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"per_page\": 15,\n    \"total\": 1,\n    \"current_page\": 1,\n    \"data\": [\n        {\n            \"id\": \"653192e1-9d9e-4616-883e-c16a73312701\",\n            \"rommNo\": 7,\n            \"guestId\": \"14fd9fb4-ae47-4fea-9329-fc8ad2f00b57\",\n            \"checkIn\": \"2023-10-17T19:30:29.000Z\",\n            \"checkOut\": \"2023-10-27T19:30:29.000Z\",\n            \"totalCost\": 500\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Reserve (Check-Out)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/reserve/:guestId/:roomNo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reserve",
+								":guestId",
+								":roomNo"
+							],
+							"variable": [
+								{
+									"key": "guestId",
+									"value": "2b179a65-eb0f-41ee-a648-01a2818b7b2f"
+								},
+								{
+									"key": "roomNo",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Rota responsável por fechar/deletar uma reserva (o famoso check-out)"
+					},
+					"response": [
+						{
+							"name": "Delete Reserve",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/reserve/:guestId/:roomNo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reserve",
+										":guestId",
+										":roomNo"
+									],
+									"variable": [
+										{
+											"key": "guestId",
+											"value": "14fd9fb4-ae47-4fea-9329-fc8ad2f00b57"
+										},
+										{
+											"key": "roomNo",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15f-rKX7/3uTx7eMkk633kZdfCWdlQg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Oct 2023 19:31:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"statusCode\": 201,\n        \"message\": \"CheckOut Done!\"\n    },\n    \"checkOutInfo\": {\n        \"message\": \"Thanks four your visit!\",\n        \"guestId\": \"14fd9fb4-ae47-4fea-9329-fc8ad2f00b57\",\n        \"name\": \"Ricardo\",\n        \"email\": \"ricardo@terra.com.br\",\n        \"phone\": \"1598716654\",\n        \"roomNo\": 7,\n        \"checkIn\": \"2023-10-17T19:30:29.000Z\",\n        \"checkOut\": \"2023-10-27T19:30:29.000Z\",\n        \"costDetail\": \"Total costs R$:500.00\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "São as rotas com as ações ligadas a reserva (reserves)"
+		}
+	]
+}
