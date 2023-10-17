@@ -8,7 +8,7 @@ export class CheckOutReserveController {
     const guestId = req.params.guestId
     const rommNo = Number(req.params.roomNo)
 
-    const reserve = await checkOutGuestUseCase.execute({
+    const checkOutInfo = await checkOutGuestUseCase.execute({
       guestId,
       rommNo,
     })
@@ -18,7 +18,7 @@ export class CheckOutReserveController {
         statusCode: 201,
         message: 'CheckOut Done!',
       },
-      reserve,
+      checkOutInfo,
     })
   }
 }

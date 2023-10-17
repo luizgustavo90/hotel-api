@@ -15,9 +15,16 @@ export type FinishCheckOutDTO = {
   rommNo: number
 }
 
-export type CheckOutMessage = {
-  checkIn: CreateCheckInDTO
-  value: string
+export type CheckOutDTO = {
+  message: string
+  guestId: string
+  name: string
+  email: string
+  phone: string
+  roomNo: number
+  checkIn: string
+  checkOut: string
+  costDetail: string
 }
 
 export type PaginateParams = {
