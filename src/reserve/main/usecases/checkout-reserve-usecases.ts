@@ -1,4 +1,3 @@
-import { AppError } from '@shared/errors/AppError'
 import { inject, injectable } from 'tsyringe'
 import { CheckOutDTO, FinishCheckOutDTO } from '../entities/types'
 import { IReserveRepository } from '@reserve/repositories/IReserveRepository'
@@ -17,13 +16,7 @@ export class CheckOutReserveUseCase {
   async execute({ guestId, rommNo }: FinishCheckOutDTO): Promise<CheckOutDTO> {
     // eslint-disable-next-line prefer-const
     let guest = await this.guestRepository.findById(guestId)
-    if (!guest) {
-      throw new AppError('This guest doesn`t exists!', 404)
-    }
     const room = await this.roomRepository.findByNumber(rommNo)
-    if (!room) {
-      throw new AppError('This room doesn`t exists!', 404)
-    }
     const reserve = await this.reserveRepository.findByNumber(rommNo)
     const checkOut = parseCheckout(reserve, guest)
 

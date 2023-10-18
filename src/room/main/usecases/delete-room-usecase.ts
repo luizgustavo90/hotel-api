@@ -1,5 +1,4 @@
 import { Room } from '../entities/Room'
-import { AppError } from '@shared/errors/AppError'
 import { IRoomRepository } from '@room/repositories/IRoomRepository'
 import { inject, injectable } from 'tsyringe'
 
@@ -11,9 +10,6 @@ export class DeleteRoomUseCase {
 
   async execute(rommNo: number): Promise<Room> {
     const room = await this.roomRepository.findByNumber(rommNo)
-    if (!room) {
-      throw new AppError('This ID is not in database!')
-    }
     await this.roomRepository.delete(room)
 
     return room

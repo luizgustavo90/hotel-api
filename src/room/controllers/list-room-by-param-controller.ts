@@ -2,24 +2,31 @@ import { ListRoomByParamUseCase } from '@room/main/usecases/list-room-by-param-u
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 import 'dotenv/config'
+import { ErrorMessage } from '@shared/errors/error-standard'
 
 export class ListRoomByParamController {
   async handle(req: Request, res: Response): Promise<Response> {
-    const listRoomByParamUseCase = container.resolve(ListRoomByParamUseCase)
-    const status = String(req.query.status)
-    const type = String(req.query.type)
-    const rommNo = Number(req.query.roomNo) || undefined
-    const limit = Number(process.env.PAGE_SIZE)
-    const page =
-      req.query.page && Number(req.query.page) > 0 ? Number(req.query.page) : 1
+    try {
+      const listRoomByParamUseCase = container.resolve(ListRoomByParamUseCase)
+      const status = String(req.query.status)
+      const type = String(req.query.type)
+      const rommNo = Number(req.query.roomNo) || undefined
+      const limit = Number(process.env.PAGE_SIZE)
+      const page =
+        req.query.page && Number(req.query.page) > 0
+          ? Number(req.query.page)
+          : 1
 
-    const room = await listRoomByParamUseCase.execute({
-      page,
-      limit,
-      rommNo,
-      status,
-      type,
-    })
-    return res.json(room)
+      const room = await listRoomByParamUseCase.execute({
+        page,
+        limit,
+        rommNo,
+        status,
+        type,
+      })
+      return res.json(room)
+    } catch (err) {
+      return ErrorMessage(res, 'Server Error', 500, err.message)
+    }
   }
 }

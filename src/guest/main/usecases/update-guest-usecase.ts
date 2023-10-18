@@ -1,5 +1,4 @@
 import { Guest } from '../entities/Guest'
-import { AppError } from '@shared/errors/AppError'
 import { IGuestRepository } from '@guest/repositories/IGuestRepository'
 import { inject, injectable } from 'tsyringe'
 import { UpdateGuestDTO } from '../entities/types'
@@ -19,9 +18,6 @@ export class UpdateGuestUseCase {
     age,
   }: UpdateGuestDTO): Promise<Guest> {
     const guest = await this.guestRepository.findById(id)
-    if (!guest) {
-      throw new AppError('This ID is not in database!')
-    }
 
     if (name) {
       guest.name = name

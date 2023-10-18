@@ -29,7 +29,7 @@ guestsRoute.post(
 )
 
 guestsRoute.put(
-  '/:id',
+  '/:guestId',
   celebrate({
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string(),
