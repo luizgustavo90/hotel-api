@@ -34,6 +34,7 @@
       "@guest/*": ["src/guest/*"],
       "@room/*": ["src/room/*"],
       "@reserve/*": ["src/reserve/*"],
+      "@user/*": ["src/user/*"],
       "@config/*": ["src/config/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */

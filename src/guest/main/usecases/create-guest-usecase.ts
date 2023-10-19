@@ -16,7 +16,7 @@ export class CreateGuestUseCase {
     phone,
     age,
   }: CreateGuestDTO): Promise<Guest> {
-    const user = await this.guestRepository.create({
+    const guest = await this.guestRepository.create({
       name,
       document,
       email,
@@ -24,6 +24,6 @@ export class CreateGuestUseCase {
       age,
     })
 
-    return user
+    return guest
   }
 }
