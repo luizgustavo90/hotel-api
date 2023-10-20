@@ -57,4 +57,7 @@ export class UserRepository implements IUserRepository {
   async delete(user: User): Promise<void> {
     await this.repository.remove(user)
   }
+  async findByToken(token: string): Promise<User | null> {
+    return this.repository.findOneBy({ token })
+  }
 }

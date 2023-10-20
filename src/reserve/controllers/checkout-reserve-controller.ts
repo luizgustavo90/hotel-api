@@ -6,10 +6,15 @@ import {
   guestIdVerify,
   roomVerify,
 } from '@shared/util/middlewares/verification'
+import { tokenVerify } from '@user/util/jwt-token'
 
 export class CheckOutReserveController {
   async handle(req: Request, res: Response): Promise<Response> {
     try {
+      const tokenVerified = await tokenVerify(req.headers.authorization)
+      if (!tokenVerified) {
+        throw ErrorMessage(res, 'Token Error', 401, 'Token is wrong or empty')
+      }
       const checkOutGuestUseCase = container.resolve(CheckOutReserveUseCase)
       const guestId = req.params.guestId
       const rommNo = Number(req.params.roomNo)

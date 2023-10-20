@@ -20,6 +20,7 @@ export interface IReserveRepository {
     take,
   }: PaginateParams): Promise<ReservePaginateProperties>
   findById(id: string): Promise<Reserve | null>
+  findByGuestId(guestId: string): Promise<Reserve | null>
   findByNumber(roomId: number): Promise<Reserve | null>
   delete(reserve: Reserve): Promise<void>
 }

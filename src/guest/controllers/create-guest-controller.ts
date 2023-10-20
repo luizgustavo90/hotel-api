@@ -3,10 +3,15 @@ import { Request, Response } from 'express'
 import { CreateGuestUseCase } from '@guest/main/usecases/create-guest-usecase'
 import { emailVerify } from '@shared/util/middlewares/verification'
 import { ErrorMessage } from '@shared/errors/error-standard'
+import { tokenVerify } from '@user/util/jwt-token'
 
 export class CreateGuestController {
   async handle(req: Request, res: Response): Promise<Response> {
     try {
+      const tokenVerified = await tokenVerify(req.headers.authorization)
+      if (!tokenVerified) {
+        throw ErrorMessage(res, 'Token Error', 401, 'Token is wrong or empty')
+      }
       const createGuestUseCase = container.resolve(CreateGuestUseCase)
       const { name, document, email, phone, age } = req.body
       await emailVerify(res, email)

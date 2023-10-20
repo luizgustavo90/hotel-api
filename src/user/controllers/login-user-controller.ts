@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import { emailVerify } from '@shared/util/middlewares/verification'
 import { ErrorMessage } from '@shared/errors/error-standard'
 import { LoginUserUseCase } from '@user/main/entities/usecases/login-user-usecases'
+import { decodedPassword } from '@user/util/jwt-token'
 
 export class LoginUserController {
   async handle(req: Request, res: Response): Promise<Response> {
@@ -10,6 +11,10 @@ export class LoginUserController {
       const loginUserUseCase = container.resolve(LoginUserUseCase)
       const { email, password } = req.body
       await emailVerify(res, email)
+      const verify = await decodedPassword(password, email)
+      if (verify === false) {
+        throw ErrorMessage(res, 'Password/Email is wrong', 401)
+      }
       const userLogged = await loginUserUseCase.execute({
         email,
         password,

@@ -3,9 +3,11 @@ import { GuestRepository } from '@guest/repositories/GuestRepository'
 import { RoomRepository } from '@room/repositories/RoomReposisory'
 import { ErrorMessage } from '@shared/errors/error-standard'
 import { Response } from 'express'
+import { ReserveRepository } from '@reserve/repositories/ReserveRepository'
 
 const guestRepository = container.resolve(GuestRepository)
 const roomRepository = container.resolve(RoomRepository)
+const reserveRepository = container.resolve(ReserveRepository)
 
 export async function guestIdVerify(
   res: Response,
@@ -14,6 +16,16 @@ export async function guestIdVerify(
   const guest = await guestRepository.findById(guestId)
   if (!guest) {
     throw ErrorMessage(res, 'Guest doesn`t exists!', 404, 'guestId invalid')
+  }
+}
+
+export async function guestReserveVerify(
+  res: Response,
+  guestId: string,
+): Promise<any> {
+  const guest = await reserveRepository.findByGuestId(guestId)
+  if (guest) {
+    throw ErrorMessage(res, 'Guest already has a reserve!', 404)
   }
 }
 

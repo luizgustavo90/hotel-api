@@ -58,6 +58,9 @@ export class ReserveRepository implements IReserveRepository {
   async findById(id: string): Promise<Reserve | null> {
     return this.repository.findOneBy({ id })
   }
+  async findByGuestId(guestId: string): Promise<Reserve | null> {
+    return this.repository.findOneBy({ guestId })
+  }
   async delete(reserve: Reserve): Promise<void> {
     await this.repository.remove(reserve)
   }
